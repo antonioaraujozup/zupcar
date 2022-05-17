@@ -1,6 +1,8 @@
 package br.com.zup.car.api.unidade;
 
 import br.com.zup.car.api.carro.Carro;
+import br.com.zup.car.api.exception.UnidadeJaReservadaException;
+import br.com.zup.car.api.usuario.Usuario;
 
 import javax.persistence.*;
 
@@ -22,6 +24,9 @@ public class Unidade {
     @ManyToOne(optional = false)
     private Carro carro;
 
+    @OneToOne(optional = true)
+    private Usuario usuario;
+
     public Unidade(String placa, String chassi, Integer ano, Carro carro) {
         this.placa = placa;
         this.chassi = chassi;
@@ -36,7 +41,20 @@ public class Unidade {
     public Unidade() {
     }
 
+    public void reservar(Usuario usuario) {
+        if (this.isReservado()) {
+            throw new UnidadeJaReservadaException("A unidade já está reservada");
+        }
+
+        this.reservado = true;
+        this.usuario = usuario;
+    }
+
     public Long getId() {
         return id;
+    }
+
+    public boolean isReservado() {
+        return reservado;
     }
 }

@@ -2,6 +2,7 @@ package br.com.zup.car.api.exception;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,6 +15,19 @@ import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class CustomExceptionHandler {
+
+    @ExceptionHandler(ObjectOptimisticLockingFailureException.class)
+    public ResponseEntity<?> handlerObjectOptimisticLockingFailureException(ObjectOptimisticLockingFailureException ex, WebRequest request) {
+        Map<String, Object> body = Map.of(
+                "status", 422,
+                "error", "Unprocessable Entity",
+                "path", request.getDescription(false).replace("uri=",""),
+                "timestamp", LocalDateTime.now(),
+                "message", "A unidade já está reservada"
+        );
+
+        return ResponseEntity.unprocessableEntity().body(body);
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> handlerMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
