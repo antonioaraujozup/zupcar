@@ -1,0 +1,25 @@
+spring:
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: none
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MariaDBDialect
+  datasource:
+    url: jdbc:mariadb://localhost:3306/zupcar
+    username: root
+    password: root
+    driver-class-name: org.mariadb.jdbc.Driver
+  flyway:
+    url: jdbc:mariadb://localhost:3306/zupcar
+    user: ${DATABASE_USER:root}
+    password: ${DATABASE_PASSWD:root}
+    enabled: true
+
+server:
+  error:
+    include-message: always
