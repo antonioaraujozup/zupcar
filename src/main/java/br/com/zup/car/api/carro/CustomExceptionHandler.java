@@ -33,6 +33,14 @@ public class CustomExceptionHandler {
             message = "Carro já cadastrado";
         }
 
+        if(constraintName.equals("UK_PLACA")) {
+            message = "Unidade com placa já cadastrada";
+        }
+
+        if(constraintName.equals("UK_CHASSI")) {
+            message = "Unidade com chassi já cadastrado";
+        }
+
         Map<String, Object> body = Map.of(
                 "status", 422,
                 "error", "Unprocessable Entity",

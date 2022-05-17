@@ -1,6 +1,8 @@
 package br.com.zup.car.api.carro;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Carro {
@@ -14,6 +16,9 @@ public class Carro {
 
     @Enumerated(EnumType.STRING)
     private Grupo grupo;
+
+    @OneToMany(mappedBy = "carro", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    private List<Unidade> unidades = new ArrayList<>();
 
     public Carro(String nome, String marca, Grupo grupo) {
         this.nome = nome;
@@ -30,5 +35,9 @@ public class Carro {
 
     public Long getId() {
         return id;
+    }
+
+    public void adicionar(Unidade unidade) {
+        this.unidades.add(unidade);
     }
 }
