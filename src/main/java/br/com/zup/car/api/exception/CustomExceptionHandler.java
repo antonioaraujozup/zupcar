@@ -1,4 +1,4 @@
-package br.com.zup.car.api.carro;
+package br.com.zup.car.api.exception;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.ResponseEntity;

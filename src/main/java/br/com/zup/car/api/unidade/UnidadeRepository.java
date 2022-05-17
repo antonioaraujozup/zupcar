@@ -1,4 +1,4 @@
-package br.com.zup.car.api.carro;
+package br.com.zup.car.api.unidade;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

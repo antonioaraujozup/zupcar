@@ -1,4 +1,6 @@
-package br.com.zup.car.api.carro;
+package br.com.zup.car.api.unidade;
+
+import br.com.zup.car.api.carro.Carro;
 
 import javax.persistence.*;
 

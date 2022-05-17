@@ -1,4 +1,7 @@
-package br.com.zup.car.api.carro;
+package br.com.zup.car.api.unidade;
+
+import br.com.zup.car.api.carro.Carro;
+import br.com.zup.car.api.unidade.Unidade;
 
 import javax.validation.constraints.*;
 

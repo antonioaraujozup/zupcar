@@ -1,5 +1,7 @@
 package br.com.zup.car.api.carro;
 
+import br.com.zup.car.api.unidade.Unidade;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
