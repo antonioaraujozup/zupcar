@@ -41,6 +41,14 @@ public class CustomExceptionHandler {
             message = "Unidade com chassi já cadastrado";
         }
 
+        if(constraintName.equals("UK_CPF")) {
+            message = "Já existe usuário cadastrado com o CPF informado";
+        }
+
+        if(constraintName.equals("UK_EMAIL")) {
+            message = "Já existe usuário cadastrado com o email informado";
+        }
+
         Map<String, Object> body = Map.of(
                 "status", 422,
                 "error", "Unprocessable Entity",
